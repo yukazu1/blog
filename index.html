@@ -1,0 +1,70 @@
+
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8" />
+	<title>aaa</title>
+<style id="webmakerstyle">
+section {
+  margin: 0;
+  padding: 20px;
+  height: 1000px;
+  background-color: #a7cfed;
+}
+section h2 {
+  margin: 0;
+}
+section:nth-child(odd) {
+  background-color: #90bfe4;
+}
+</style>
+</head>
+<body>
+<h1>JavaScriptレシピ</h1>
+<section>
+  <h2>ページ1</h2>
+</section>
+<section>
+  <h2>ページ2</h2>
+</section>
+<section>
+  <h2>ページ3</h2>
+</section>
+
+<script>
+var scroll_y = window.scrollY;
+var page = [
+	{
+		title: '1',
+		url: '0001'
+	},
+	{
+		title: '2',
+		url: '0002'
+	},
+	{
+		title: '3',
+		url: '#time3'
+	}
+];
+
+// アドレスバーのURLをページ移動せずに変更する
+window.addEventListener('DOMContentLoaded', function(){
+
+	window.addEventListener('scroll', function(){
+		scroll_y = window.scrollY;
+
+		if( 2000 < scroll_y ) {
+			history.pushState('', page[2].title, page[2].url);
+		} else if( 1000 < scroll_y ) {
+			history.pushState('', page[1].title, page[1].url);
+		} else {
+			history.pushState('', page[0].title, page[0].url);
+		}
+	});
+});
+//# sourceURL=userscript.js
+</script>
+</body>
+</html>
